@@ -1,2 +1,9 @@
-# quick-start
-Provides a quick start into a basic data analysis project
+Вивчай R
+========
+Цей проект спрямован на підтримку вивчення мови програмування R для україномовних учнів
+
+# Resources
+
+
+
+
