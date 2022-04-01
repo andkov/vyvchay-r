@@ -1,47 +1,41 @@
+# Functions loaded by EVERY script in the project
 library(ggplot2)
+
+baseSize <- 10
+
+print_all <- function(d){
+  print(d,n=nrow(d))
+}
+
 ggplot2::theme_set(
   ggplot2::theme_bw(
   )+
     theme(
-      strip.background = element_rect(fill="grey95", color = NA)
+      strip.background = element_rect(fill="grey90", color = NA)
+      ,panel.grid = element_line(color = "grey90")
+      ,panel.border = element_rect(color = "grey80")
+      ,axis.ticks = element_blank()
+      ,text=element_text(size=baseSize)
     )
 )
+
 quick_save <- function(g,name,...){
   ggplot2::ggsave(
-    filename = paste0(name,".jpg"),
+    filename = paste0(name,".png"),
     plot     = g,
-    device   = "jpg",
+    # device   = "jpg",
     path     = prints_folder,
     # width    = width,
     # height   = height,
     # units = "cm",
-    dpi      = 'retina',
+    # dpi      = 'retina',
     limitsize = FALSE,
     ...
   )
 }
 
-
-# print names and associated lables of variables (if attr(.,"label)) is present
-names_labels <- function(ds){
-  dd <- as.data.frame(ds)
-  
-  nl <- data.frame(matrix(NA, nrow=ncol(dd), ncol=2))
-  names(nl) <- c("name","label")
-  for (i in seq_along(names(dd))){
-    # i = 2
-    nl[i,"name"] <- attr(dd[i], "names")
-    if(is.null(attr(dd[[i]], "label")) ){
-      nl[i,"label"] <- NA}else{
-        nl[i,"label"] <- attr(dd[,i], "label")
-      }
-  }
-  return(nl)
-}
-# names_labels(ds=oneFile)
-
 # adds neat styling to your knitr table
-neat <- function(x, output_format = "html"){ 
+neat <- function(x, output_format = "html"){
   # knitr.table.format = output_format
   if(output_format == "pandoc"){
     x_t <- knitr::kable(x, format = "pandoc")
@@ -56,7 +50,7 @@ neat <- function(x, output_format = "html"){
         full_width = F,
         position = "left"
       )
-  } 
+  }
   return(x_t)
 }
 # ds %>% distinct(id) %>% count() %>% neat(10)
@@ -65,7 +59,7 @@ neat <- function(x, output_format = "html"){
 neat_DT <- function(x, filter_="top",...){
   
   xt <- x %>%
-    as.data.frame() %>% 
+    as.data.frame() %>%
     DT::datatable(
       class   = 'cell-border stripe'
       ,filter  = filter_
@@ -77,5 +71,3 @@ neat_DT <- function(x, filter_="top",...){
     )
   return(xt)
 }
-
-dt <- neat_DT
