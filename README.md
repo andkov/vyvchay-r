@@ -2,6 +2,8 @@
 ========
 Цей проект спрямован на підтримку вивчення мови програмування R для україномовних учнів
 
+[slide][slides1]
+
 # Ресурси
 [Hands-on Programming in R][]
 
@@ -20,5 +22,5 @@
 
 [moroz]:https://agricolamz.github.io/DS_for_DH/
 [tarasenko]:https://tvims.nsu.ru/tarasenko/files/01_basics.pdf
-
+[slides1]:https://docs.google.com/presentation/d/15E4wdiCiS9MzOPLalR6Jo2mXAeXxAImtB79h2xWAWSU/edit?usp=sharing
 
