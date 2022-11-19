@@ -23,6 +23,21 @@ ds0 <- read_sheet(sheet_name,tab_name,skip = 0)
 ds0
 # ---- tweak-data --------------------------------------------------------------
 # ---- graph-1 -----------------------------------------------------------------
+g <- 
+  ds0 %>% 
+  ggplot(aes(x = Race, y = Points)) + 
+  geom_point() +
+  geom_line() +
+  geom_smooth(method = "lm") +
+  scale_x_continuous(breaks = c(1:10),minor_breaks = seq(1,10,1)) +
+  labs(
+    title = 'Кількість балів за вправу по сліпому друку'
+    ,x = 'Номер вправи'
+    ,y = 'кількість балів'
+    
+  )
+g
+g %>% quick_save('1-typing-2022-11-19', h = 4, w = 6)
 # ---- graph-2 -----------------------------------------------------------------
 # ---- save-to-disk ------------------------------------------------------------
 path <- "./analysis/type-racer/type-racer.Rmd"
