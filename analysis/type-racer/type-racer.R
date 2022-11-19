@@ -23,8 +23,9 @@ ds0 <- read_sheet(sheet_name,tab_name,skip = 0)
 ds0
 # ---- tweak-data --------------------------------------------------------------
 # ---- graph-1 -----------------------------------------------------------------
+# ---- graph-2 -----------------------------------------------------------------
 # ---- save-to-disk ------------------------------------------------------------
-path <- "./analysis/.../report-isolated.Rmd"
+path <- "./analysis/type-racer/type-racer.Rmd"
 rmarkdown::render(
   input = path ,
   output_format=c(
