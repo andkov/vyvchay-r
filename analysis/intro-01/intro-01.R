@@ -43,8 +43,8 @@ g1 <-
     founded_before_1500 = year_founded > 1500
   ) %>% 
   ggplot(aes(x=year_founded, y = ua_pop_2001, color = founded_before_1500))+
-  geom_text_repel(aes(label = misto),size=5)+
-  geom_text_repel(aes(label = year_founded), alpha = .8, color="black")+
+  ggrepel::geom_text_repel(aes(label = misto),size=5)+
+  ggrepel::geom_text_repel(aes(label = year_founded), alpha = .8, color="black")+
   geom_point(aes(size =pop_2001), alpha = .5)+
   theme(
     legend.position = "bottom"
@@ -90,6 +90,31 @@ ds0 %>%
   ggplot(aes(x=density, y = ua_pop_2001))+
   geom_point()+
   geom_text(aes(label=misto))
+
+# ----- g5 ----------------------------
+library(ggrepel)
+g1 <- 
+  ds0 %>% 
+  mutate(
+    founded_before_1500 = year_founded > 1500
+  ) %>% 
+  ggplot(aes(x=year_founded, y = ua_pop_2001, color = founded_before_1500))+
+  ggrepel::geom_text_repel(aes(label = misto),size=5,force = .6)+
+  ggrepel::geom_text_repel(aes(label = year_founded), alpha = .8, color="black")+
+  geom_point(aes(size =pop_2001), alpha = .5)+
+  theme(
+    legend.position = "bottom"
+  )
+
+g1
+g1 %>% 
+  ggsave(
+    filename = "./analysis/intro-01/5-age-pct_ua.png"
+    ,width = 297
+    ,height = 210
+    ,units = "mm"
+  )
+
 # ---- save-to-disk ------------------------------------------------------------
 path <- "./analysis/.../report-isolated.Rmd"
 rmarkdown::render(
