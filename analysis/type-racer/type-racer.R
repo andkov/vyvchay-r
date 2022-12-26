@@ -39,6 +39,61 @@ g <-
 g
 g %>% quick_save('1-typing-2022-11-19', h = 4, w = 6)
 # ---- graph-2 -----------------------------------------------------------------
+ds1 <- 
+  ds0 %>% 
+  # janitor::clean_names() %>% 
+  filter(Duel == F)  %>% 
+  mutate(
+     Duel = as.logical(Duel)
+     ,Date = as.factor(Date)
+  )
+
+ds0 %>% glimpse()
+ds1 %>% glimpse()
+# ---- graph-3 -----------------------------------------------------------------
+ds2 <- 
+  ds1 %>% 
+  ggplot(aes(x = Date, y = Speed)) +
+  geom_boxplot()
+ds2
+# ---- graph-4 P -----------------------------------------------------------------
+ds5 <- 
+  ds0 %>% 
+  mutate(
+    Duel == as.logical(Duel)
+  ) %>% 
+  filter(Duel == F, Points > 20)
+
+d1 <- 
+ ds5 %>% 
+  ggplot(aes(y = Speed, x = Points, color = Speed ))  +
+  geom_point(size = 1.5)
+d1
+# ---- graph-5 P -----------------------------------------------------------------
+ds6 <- 
+  ds0 %>% 
+  mutate(
+    Duel == as.logical(Duel)
+  ) %>% 
+  filter(Duel == F, Points < 20)
+
+
+d2 <- 
+  ds6 %>%
+  ggplot(aes(x = Points, y = Speed, color = Speed)) +
+  geom_point(size = 1.5)
+d2  
+# ---- graph-6 -----------------------------------------------------------------
+ds7 <- 
+  ds0 %>% 
+  filter(Accuracy > 0.9)
+
+d3 <- 
+  ds7 %>% 
+  ggplot(aes(x = Accuracy, y = Speed)) +
+  geom_point()
+  # geom_smooth()
+d3
 # ---- save-to-disk ------------------------------------------------------------
 path <- "./analysis/type-racer/type-racer.Rmd"
 rmarkdown::render(
