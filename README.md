@@ -13,9 +13,6 @@
 - [Data Science for Psychologists](https://bookdown.org/hneth/ds4psy/) by Hansjorg Neth
 - [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/) by Roger Peng  
 
-- [Наука о данных в R для программы Цифровых гуманитарных исследований][moroz] - Г.А.Мороз - досить ретельний огляд ключових ідей мови програмування R, основ статистичного аналізу, і відтворюваних досліджень з `tidyverse` 
-- [Минимальное введени в R][tarasenko] - [Тарасенко](https://tvims.nsu.ru/tarasenko/) 
-
 
 [moroz]:https://agricolamz.github.io/DS_for_DH/
 [tarasenko]:https://tvims.nsu.ru/tarasenko/files/01_basics.pdf
